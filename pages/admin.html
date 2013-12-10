@@ -1,0 +1,57 @@
+{% extends "loophole.html" %}
+{% block maincontent %}
+  <div class="article">
+    <h2>Admin</h2><div class="clr"></div>
+	<strong>欢迎来到后台管理</strong>
+	<p>这里是网站的后台。网站的后台页面是为了方便网站的管理而设置的。在大多数网站的后台页面可以更改站点的标题等信息、更改站点的配置文件、对数据库进行维护、启用禁用插件、查看统计信息甚至修改网页内容以及外观主题。所以占领了网站的后台就向获取服务器权限更近了一步。下一步是通过后台，设法获取数据库的口令、SSH的口令等信息，或者用后台提供的工具上传Webshell插件等后面程序，实施进一步的攻击。</p>
+  </div>
+   <div class="article">
+    <h2>Reset Password</h2><div class="clr"></div>
+    <p>更改后台的密码</p>
+    <form name="frm1" id="frm1" method="POST" action="">
+    	<input name="hidId" type="hidden" value="frm1" />
+    	<label for="txtPasswd">新的密码</label>
+	    <p><input id="txtPasswd" name="txtPasswd" type="password" /></p>
+      <p><input id="txtPasswd1" name="txtPasswd1" type="password" value="lkdjsaoivdsadsavdsaklj" style="display:none;" />{#<!-- 防止单文本框时回车后自动提交 -->#}</p>
+	    <p><input name="btnok" type="submit" id="btnok" value="确定" />
+      &nbsp;
+      <input name="btnrst" type="reset" id="btnrst" value="重置" /></p>
+    </form>
+  </div>
+  <div class="article">
+    <h2>Options</h2><div class="clr"></div>
+    <form name="frm2" id="frm2" method="POST" action="">
+    	<input name="hidId" type="hidden" value="frm2" />
+	    <p>
+	    	<input id="chkLoophole" name="chkLoophole" type="checkbox" onclick="javascript:setexample();"
+	    		{% if loophole_en %}checked="true"{% end %}
+	    	/>
+	    	<label for="chkLoophole">开启或关闭SQL漏洞</label>
+	    </p>
+	    <style type="text/css">
+	    	p#example span{color: #F50;}
+	    </style>
+	    <p id="example" style="font-size:1.2em;"></p>
+	    <p><input name="btnok" type="submit" id="btnoptok" value="确定" /></p>
+    </form>
+  </div>
+  <script type="text/javascript">
+  	function setexample(){
+  		var eg=document.getElementById("example");
+  		if(document.getElementById("chkLoophole").checked){
+  			eg.innerHTML="[python示例]<br/>&nbsp;cur.execute('<span><strong>select</strong> name <strong>from</strong> tuser <strong>where</strong> name=\"</span>'+name+'<span>\" <strong>and</strong> passwd=\"</span>'+passwd+'<span>\";</span>')";
+  		}
+  		else{
+	  		eg.innerHTML="[python示例]<br/>&nbsp;cur.execute('<span><strong>select</strong> name <strong>from</strong> tuser <strong>where</strong> name=? <strong>and</strong> passwd=?;</span>',(name,passwd))";
+	  	}
+  	}
+	function checkfields(){
+	  var upwd=document.getElementById("txtPasswd").value;
+	  var buttonSubmit=document.getElementById("btnok");
+	  if(upwd.match(/^\d{4}$/))buttonSubmit.disabled=false;
+	  else buttonSubmit.disabled=true;
+	}
+	window.setInterval('checkfields()',100);
+	setexample();
+  </script>
+{% end %}

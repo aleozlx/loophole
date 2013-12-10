@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Loophole</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="{{ static_url('style.css') }}" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="{{ static_url('js/cufon-yui.js') }}"></script>
+<script type="text/javascript" src="{{ static_url('js/arial.js') }}"></script>
+<script type="text/javascript" src="{{ static_url('js/cuf_run.js') }}"></script>
+<!-- CuFon ends -->
+</head>
+<body>
+<div class="main">
+
+  <div class="header">
+    <div class="header_resize">
+      <div class="logo"><h1><a href="home"><span>Loophole</span> - Cyber Attack&amp;Defense <small>Course Design on SQL Injection and Weak Password Vulnerbilities</small></a></h1></div>
+      <div class="clr"></div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        {% block maincontent %}<br/>{% end %}
+      </div>
+      <div class="sidebar">
+        <div class="gadget">
+          <h2 class="star"><span>Navigation</span></h2><div class="clr"></div>
+          <ul class="sb_menu">
+            <li><a href="home">主页</a></li>
+            <li><a href="admin">登入后台</a></li>
+            <li><a href="logout">退出</a></li>
+          </ul>
+        </div>
+        <div class="gadget">
+          <h2 class="star"><span>References</span></h2><div class="clr"></div>
+          <ul class="ex_menu">
+            <li><a href="http://pan.baidu.com/s/1pDe9h" target="_blank">信息收集技术.ppt(本人亲手制作)</a><br />百度云</li>
+            <li><a href="http://zh.wikipedia.org/wiki/SQL%E6%B3%A8%E5%85%A5" target="_blank" >SQL注入攻击</a><br />维基百科</li>
+            <li><a href="http://zh.wikipedia.org/wiki/%E5%AF%86%E7%A0%81%E5%BC%BA%E5%BA%A6" target="_blank">密码强度</a><br />维基百科</li>
+            <li><a href="http://www.freebuf.com/articles/web/7359.html" target="_blank">黑客是怎样入侵你的网站的</a><br />FreeBuf.COM</li>
+            <li><a href="http://www.cr173.com/soft/30753.html" target="_blank">啊D注入工具</a><br />西西软件下载</li>
+            <li><a href="http://zh.wikipedia.org/wiki/Nmap" target="_blank">Nmap</a><br />维基百科</li>
+            <li><a href="http://docs.python.org/2/howto/urllib2.html" target="_blank">HOWTO Fetch Internet Resources Using urllib2</a><br />Python v2.6.5c2 documentation </li>
+            <li><a href="http://rj.baidu.com/soft/detail/15788.html?ald" target="_blank">Wireshark</a><br />百度软件中心</li>
+            <li><a href="http://soft.hao123.com/soft/appid/8089.html" target="_blank">Fiddler</a><br />hao123下载</li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+
+  <div class="fbg">
+    <div class="fbg_resize">
+      <div class="col c1">
+        <h2><span>About</span></h2>
+        <!-- <img src="images/white.jpg" width="56" height="56" alt="pix" /> -->
+        <p>您好，我是本站的设计者。本人是华东理工大学信息学院计算机科学与技术专业（12届）学生杨章唯。这是《网络攻防》课程第一组的课程设计，内容以SQL注入攻击以及口令攻击为例，主要演示“信息采集技术”这一节的相关技术。本人熟悉网站技术，故直接采用网站的形式来进行介绍和演示。</p>
+      </div>
+      <div class="col c2">
+        <h2><span>Attack!</span></h2>
+        <p>现如今SQL漏洞已经不多了，<strong>还等什么！！</strong>快点击右边栏中的“登入后台”链接开始尝试<strong>攻击</strong>！</p>
+      </div>
+      <div class="col c3">
+        <h2>Contact</h2>
+        <p>对这个课程设计感兴趣？对这个课程设计还有什么高见？欢迎联系本人。</p>
+        <p>我的电子邮件地址：<a href="mailto:aleozlx@yahoo.com">aleozlx@yahoo.com</a></p>
+      </div>
+      <div class="clr"></div>
+    </div>
+  </div>
+  <div class="footer">
+    <div class="footer_resize">
+      <p class="lf">© 2013 <a href="mailto:aleozlx@yahoo.com">Alex</a></p>
+      <div class="clr"></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

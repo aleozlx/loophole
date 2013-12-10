@@ -1,0 +1,82 @@
+{% extends "loophole.html" %}
+{% block maincontent %}
+  <div class="article" >
+    <h2>Login!</h2><div class="clr"></div>
+    <p>请尝试攻破此认证页面，进入后台管理。</p>
+    <br/><br/>
+    <div style="text-align:center;">
+    	{#SQL注入点#}{#1" OR "1"="1#}{#javascript:frmLogin.submit();#}
+	    <strong>请输入用户名和口令进行登入。</strong>
+	    <form name="frmLogin" method="POST" action="" >
+	      <p><input id="txtUser" name="txtUser" type="text" /></p>
+	      <p><input id="txtPasswd" name="txtPasswd" type="password" /></p>
+	      <p>
+	        <input name="btnok" type="submit" id="btnok" value="确定" />
+	        &nbsp;
+	        <input name="btnrst" type="reset" id="btnrst" value="重置" />
+	      </p>
+	    </form>
+	</div>
+  </div>
+  <div class="article">
+    <h2>Hint</h2><div class="clr"></div>
+    <ul>
+    <li>输入任意的用户名口令，然后抓包，看看能获得什么？HTTP POST包发向哪里？含有什么内容？</li>
+    <li>这里采用的用户名是容易很猜到的，试着猜几个看。</li>
+    <li>这里采用的密码很弱只有4个数字。</li>
+    </ul>
+  </div>
+   <div class="article">
+    <h2>Solution</h2><div class="clr"></div>
+    <p>这可能是全世界最容易攻击的网站，真的决定放弃了吗？好吧，没关系。点击下面的按钮显示答案。</p>
+    <style type="text/css" media="screen">
+      a#newmd-button{
+        background: #0370ea;
+        background: -moz-linear-gradient(top,#008dfd 0,#0370ea 100%);
+        background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#008dfd),color-stop(100%,#0370ea));
+        background: -webkit-linear-gradient(top,#008dfd 0,#0370ea 100%);
+        background: -o-linear-gradient(top,#008dfd 0,#0370ea 100%);
+        background: -ms-linear-gradient(top,#008dfd 0,#0370ea 100%);
+        background: linear-gradient(top,#008dfd 0,#0370ea 100%);
+        border: 1px solid #076bd2;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color: #fff !important;
+        display: inline-block;
+        font-size: 13px;
+        font-weight: 700;
+        line-height: 1.3;
+        padding: 8px 25px;
+        text-align: center;
+        text-decoration: none !important;
+        text-shadow: 1px 1px 1px #076bd2;
+      }
+    </style>
+    <div id="solution">
+      <br/>
+      <div style="text-align:center;"><a id="newmd-button" href="javascript:loadAnswer();">答案</a></div>
+    </div>
+  </div>
+  <script type="text/javascript">
+  function loadAnswer(){
+    var xmlhttp;
+    if (window.XMLHttpRequest)xmlhttp=new XMLHttpRequest();
+    else xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    xmlhttp.onreadystatechange=function(){
+      if (xmlhttp.readyState==4 && xmlhttp.status==200){
+        document.getElementById("solution").innerHTML=xmlhttp.responseText;
+      }
+    }
+    xmlhttp.open("GET","/static/example.html",true);
+    xmlhttp.send();
+  }
+	function checkfields(){
+	  var uname=document.getElementById("txtUser").value;
+	  var upwd=document.getElementById("txtPasswd").value;
+	  var buttonSubmit=document.getElementById("btnok");
+	  if(uname.match(/^[a-z0-9A-Z]+$/)&&upwd.match(/^\d{4}$/))buttonSubmit.disabled=false;
+	  else buttonSubmit.disabled=true;
+	}
+	window.setInterval('checkfields()',100);
+  </script>
+{% end %}
